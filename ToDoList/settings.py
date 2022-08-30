@@ -5,12 +5,12 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'mitulzala'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['todolist-django-mitul.herokuapp.com','localhost']
 
 
 # Application definition
@@ -59,14 +59,19 @@ WSGI_APPLICATION = 'ToDoList.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+PRODUCTION = os.environ.get('DATABASE_URL') != None
+
 DATABASES = {
     'default': {
+        'URI':os.environ.get('DATABASE_URL'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'user',
-        'USER': 'postgres',
-        'PASSWORD': '<yourpassword>',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.environ.get('NAME'),
+        'USER': os.environ.get('USER'),
+        'PASSWORD': os.environ.get('PASSWORD'),
+        'HOST': os.environ.get('HOST'),
+        'PORT':os.environ.get('PORT')
     }
 }
 
