@@ -1,2 +1,1 @@
-web: gunicorn ToDoList.wsgi:application --log-file -
-web: gunicorn --workers=3 app:app --timeout 200 --log-file -
+web: gunicorn ToDoList.wsgi:application --timeout 200 --log-file -
