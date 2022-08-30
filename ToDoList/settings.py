@@ -67,7 +67,7 @@ DATABASES = {
     'default': {
         'URI':os.environ.get('DATABASE_URL'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': os.environ.get('NAME'),
+        'NAME': os.environ.get('NAME'),
         # 'USER': os.environ.get('USER'),
         # 'PASSWORD': os.environ.get('PASSWORD'),
         # 'HOST': os.environ.get('HOST'),
