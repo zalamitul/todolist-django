@@ -1,0 +1,51 @@
+{%extends 'homepage.html'%}
+{%block content%}
+<div class="tabletodo">
+    <table class="table">
+
+        <tr class="index">
+            <td>Sr</td>
+            <td>Todo list</td>
+            <td>status</td>
+        </tr>
+        {%if data%}
+        {%for i in data%}
+        <tr>
+            <td class="srno">{{ forloop.counter }}</td>
+            <td> <span class="todotitle">{{i.title}}</span> <span>{{i.todo}} </span> <span class="tododate">
+                    {{i.date}}</span></td>
+            <td class="buttons">
+                <div>
+                    <form action="deletetodo" method="post">
+                        {%csrf_token%}
+                        <input type="hidden" name="title" value="{{i.title}}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+
+                <div>
+                    <form action="updatetodo" method="post">
+                        {%csrf_token%}
+                        <input type="hidden" name="title" value="{{i.title}}">
+                        <button type="submit">update</button>
+                    </form>
+                </div>
+
+                <div>
+                    <form action="completetodo" method="post">
+                        {%csrf_token%}
+                        <input type="hidden" name="title" value="{{i.title}}">
+                        <button type="submit">completed</button>
+                    </form>
+
+                </div>
+            </td>
+        </tr>
+
+        {%endfor%}
+        {%else%}
+        <h1> No data: </h1>
+        {%endif%}
+    </table>
+</div>
+{%endblock%}
