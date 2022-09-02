@@ -9,24 +9,36 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+
         }
 
         body {
-            font-family: 'Dancing Script', cursive;
+
+            /* font-family: 'Dancing Script', cursive; */
+            background: -webkit-linear-gradient(left, #4a98e6, #117eea, #4e9dec);
         }
 
         .main {
             width: 100%;
             display: flex;
-            background-color: aqua;
+            max-height: 100vh;
+            overflow: auto;
+            /* background-color: blue; */
         }
 
         .left {
+            color: black;
+
             width: 25%;
             padding: 20px 10px;
-            background-color: antiquewhite;
+            /* background-color: antiquewhite; */
             display: flex;
             flex-direction: column;
+            height: 100vh;
+            overflow: auto;
+            border: 1px solid black;
+
         }
 
         .profile {
@@ -55,11 +67,10 @@
 
         .container {
             margin: 40px 10px;
-
         }
 
         .container h2 {
-            background-color: bisque;
+            /* background-color: bisque; */
             margin: 5px 10px;
         }
 
@@ -68,10 +79,13 @@
         }
 
         .right {
-            background-color: aquamarine;
+            /* background-color: aquamarine; */
             width: 75%;
             display: flex;
             flex-direction: column;
+            height: 100vh;
+            overflow: auto;
+            border: 1px solid black;
         }
 
         .title h1 {
@@ -120,7 +134,7 @@
 
             margin: 0;
             padding: 0;
-            border: 1px solid red;
+            border: 1px solid white;
         }
 
         tr,
@@ -207,13 +221,124 @@
         input[type='text']:focus {
             border: none;
         }
+
+        @media screen and (min-width:460px) {
+
+            .main {
+                font-size: 3vh;
+                /* background-color: blue; */
+            }
+
+            .left {
+                display: none;
+                /* display: flex; */
+                position: absolute;
+                top: 1vh;
+                width: 70%;
+                left: 0;
+                margin-top: 172px;
+                padding: 60px 20px;
+                font-size: 40px;
+                border: 2px solid black;
+                box-shadow: 0px 0px 22px 2px white;
+                background-color: #79bcff;
+            }
+
+            .btnmenu {
+                position: absolute;
+                margin: 40px;
+            }
+
+            .btnmenu img {
+                width: 90px;
+                height: 90px;
+            }
+
+            .right {
+                width: 100%;
+                font-size: 60px;
+            }
+
+
+            .nav {
+                font-size: 30vw;
+                background-color: aliceblue;
+            }
+
+
+            ul li,
+            a {
+
+                font-size: 30px;
+            }
+
+            li:last-child {
+
+                margin-left: 0vw;
+            }
+
+
+
+            .tabletodo {
+                width: 100%;
+                padding: 50px;
+            }
+
+            tr,
+            td {
+                font-size: 30px;
+                padding: 15px;
+            }
+
+            button {
+
+                font-size: 25px;
+
+            }
+
+
+            .tododate {
+                font-size: 20px;
+            }
+
+            .form {
+                font-size: 75px;
+                margin: 80px 40px;
+            }
+
+            .input {
+                font-weight: 700;
+            }
+
+            .submit {
+                font-weight: 900;
+                font-size: 55px;
+                padding: 20px 40px;
+                border-radius: 25px;
+            }
+
+            input[type='text'] {
+                margin-left: 30px;
+
+                font-size: 55px;
+                border-radius: 15px;
+
+
+            }
+
+            input[type='text']:focus {
+                border: none;
+                border-radius: 15px;
+
+            }
+        }
     </style>
 </head>
 
 <body>
     {%load length_todo%}
     <div class="main">
-        <div class="left">
+        <div class="left" id="left">
             <div class="profile">
                 <div class="photo">
                     <img src="static/user-icon.png" width="100px" height="100px" alt="">
@@ -240,8 +365,10 @@
 
             </div>
         </div>
-        <div class="right">
+        <div class="right" id="right">
             <div class="title">
+                <div id="btnmenu" class="btnmenu" onclick="click"> <img onclick="displayDate()" src="static/menu.png"
+                        onclick="click()"> </div>
                 <h1 style="font-family: 'Dancing Script', cursive;">Todo list</h1>
             </div>
             <div class="nav">
@@ -263,6 +390,23 @@
             </div>
         </div>
     </div>
+    <script>
+        function displayDate() {
+            var y = document.getElementById('left');
+            if (y.style.display == 'flex') {
+                y.style.display = 'none';
+                y.style.zIndex=3;
+                document.getElementById('right').style.opacity = 1;
+            } else {
+                y.style.zIndex=3;
+                y.style.display = 'flex';
+                document.getElementById('right').style.opacity = 0.3;
+
+            }
+            console.log('akls')
+        }
+
+    </script>
 </body>
 
 </html>

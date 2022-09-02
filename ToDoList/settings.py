@@ -1,16 +1,15 @@
 from pathlib import Path
 import os
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['todolist-django-mitul.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['todolist-django-mitul.herokuapp.com','*']
 
 
 # Application definition
@@ -61,17 +60,19 @@ WSGI_APPLICATION = 'ToDoList.wsgi.application'
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-PRODUCTION = os.environ.get('DATABASE_URL') != None
+# PRODUCTION = os.environ.get('DATABASE_URL') != None
 
+from dotenv import load_dotenv
+load_dotenv()
 DATABASES = {
     'default': {
-        'URI':os.environ.get('DATABASE_URL'),
+        # 'URI':os.environ.get('DATABASE_URL'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('NAME'),
-        'USER': os.environ.get('USER'),
-        'PASSWORD': os.environ.get('PASSWORD'),
-        # 'HOST': os.environ.get('HOST'),
-        # 'PORT':os.environ.get('PORT')
+        'NAME': os.getenv('NAME'),
+        'USER': os.getenv('USER'),
+        'PASSWORD': os.getenv('PASSWORD'),
+        'HOST': os.getenv('HOST'),
+        'PORT':os.getenv('PORT')
     }
 }
 
@@ -124,7 +125,7 @@ MEDIA_ROOT=BASE_DIR
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-
-import dj_database_url
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-
+#
+# import dj_database_url
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+#
