@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>homepage</title>
@@ -362,7 +363,7 @@
         <div class="left" id="left">
             <div class="profile">
                 <div class="photo">
-                    <img src="user-icon.png" width="100px" height="100px" alt="">
+                    <img src="{% static 'user-icon.png'%}" width="100px" height="100px" alt="">
                 </div>
                 <div class="bio">
                     <span>
