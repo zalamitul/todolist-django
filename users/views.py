@@ -55,6 +55,8 @@ def homepage(req):
     data=User.get_user(req.session['userdata'].get('email'))
     d={}
     d['data']=data.todo
+    req.session['remain']=True
+    req.session['all']=False
     return render(req, 'index.html', d)
 
 
@@ -66,10 +68,18 @@ def addtodo(req):
         temp['date']=datetime.datetime.now().strftime("%c")
         userdata=User.get_user(req.session['userdata'].get('email'))
         try:
-            if req.session['update']:
+            if req.session['update?']:
                 userdata.todo[req.session['update']]=temp
-                del req.session['update']
+                req.session['update?']=False
+                userdata.save()
+                req.session['userdata']=User.get_userdata(userdata.email)
+                if req.session['all']:
+                    return redirect('alltodo')
+                elif req.session['remain']:
+                    return redirect('homepage')
+                return redirect('homepage')
         except:
+            print(temp)
             userdata.todo.append(temp)
         userdata.save()
         req.session['userdata']=User.get_userdata(userdata.email)
@@ -88,9 +98,9 @@ def completetodo(req):
         userdata.save()
         print(req.path)
         req.session['userdata']=User.get_userdata(userdata.email)
-        if req.path=='alltodo':
+        if req.session['all']:
             return redirect('alltodo')
-        else:
+        elif req.session['remain']:
             return redirect('homepage')
     if req.method=='GET':
         userdata=User.get_user(req.session['userdata'].get('email'))
@@ -107,6 +117,8 @@ def logout(req):
 def all(req):
     userdata=User.get_user(req.session['userdata'].get('email'))
     data={}
+    req.session['all']=True
+    req.session['remain']=False
     data['data']=userdata.todo
     data['data2']=userdata.completed_todo
     return render(req, 'Alltodo.html', data)
@@ -121,6 +133,10 @@ def deletetodo(req):
         userdata.todo.pop(i)
         userdata.save()
         req.session['userdata']=User.get_userdata(userdata.email)
+        if req.session['all']:
+            return redirect('alltodo')
+        elif req.session['remain']:
+            return redirect('homepage')
         return redirect('homepage')
 
 
@@ -132,6 +148,7 @@ def updatetodo(req):
         d={}
         d['update']=userdata.todo[i]
         req.session['update']=i
+        req.session['update?']=True
         d['data']=userdata.todo
         d['data2']=userdata.completed_todo
         return render(req, 'Addtodo.html', d)

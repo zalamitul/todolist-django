@@ -5,10 +5,10 @@
   {% csrf_token %}
   <div class="form">
     <div class="input">
-      title:<input type="text" name="title" value="{{update.title}}">
+      title:<input type="text" name="title" value="{{update.title}}" required>
     </div>
     <div class="input">
-      todo:<input type="text" class="addtodo" name="todo" value="{{update.todo}}">
+      todo:<input type="text" class="addtodo" name="todo" value="{{update.todo}}" required>
     </div>
     <button class="submit" type="submit">submit</button>
   </div>

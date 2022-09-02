@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>homepage</title>
     <style>
         * {
@@ -29,16 +30,15 @@
 
         .left {
             color: black;
-
             width: 25%;
-            padding: 20px 10px;
+            /* padding: 20px 10px; */
             /* background-color: antiquewhite; */
             display: flex;
             flex-direction: column;
             height: 100vh;
             overflow: auto;
             border: 1px solid black;
-
+            
         }
 
         .profile {
@@ -66,7 +66,7 @@
         }
 
         .container {
-            margin: 40px 10px;
+            margin: 4px 1px;
         }
 
         .container h2 {
@@ -87,7 +87,6 @@
             overflow: auto;
             border: 1px solid black;
         }
-
         .title h1 {
             float: right;
             margin: 10px 20px;
@@ -222,7 +221,11 @@
             border: none;
         }
 
-        @media screen and (min-width:460px) {
+        .btnmenu {
+            display: none;
+        }
+
+        @media screen and (max-width:460px) {
 
             .main {
                 font-size: 3vh;
@@ -245,91 +248,103 @@
             }
 
             .btnmenu {
+                display: block;
                 position: absolute;
-                margin: 40px;
+                margin: 20px;
             }
 
             .btnmenu img {
-                width: 90px;
-                height: 90px;
+                width: 25px;
+                height: 25px;
             }
 
             .right {
                 width: 100%;
-                font-size: 60px;
+                font-size: 12px;
             }
 
 
-            .nav {
-                font-size: 30vw;
-                background-color: aliceblue;
+            ul {
+                padding: 5px;
             }
-
 
             ul li,
             a {
-
-                font-size: 30px;
+                font-size: 12px;
+                padding: 2px 6px;
+              
             }
 
             li:last-child {
-
                 margin-left: 0vw;
             }
 
-
-
-            .tabletodo {
-                width: 100%;
-                padding: 50px;
+            ul li:hover {
+                background-color: turquoise;
             }
 
-            tr,
-            td {
-                font-size: 30px;
-                padding: 15px;
+            .tabletodo{
+                margin: 5px;
+                padding: 5px;
             }
+           
+           
 
             button {
-
-                font-size: 25px;
-
+                margin: 1px;
+                padding: 1px 2px;
+            }
+            .index {
+                font-size:12px;
+                font-weight: 400;
             }
 
+            .todotitle {
+               padding: 3px;
+                font-size: 12px;
+            }
 
             .tododate {
-                font-size: 20px;
+                font-size: 8px;
+                background-color: rgba(87, 173, 249, 0.379);
             }
 
             .form {
-                font-size: 75px;
-                margin: 80px 40px;
+                font-size: 18px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                height: 200px;
+                width: 100%;
             }
 
             .input {
-                font-weight: 700;
+                text-transform: capitalize;
+                font-weight: 400;
+                font-size: 25px;
             }
 
             .submit {
+                display: block;
+                width: fit-content;
                 font-weight: 900;
-                font-size: 55px;
-                padding: 20px 40px;
-                border-radius: 25px;
+                font-size: 25px;
             }
 
             input[type='text'] {
-                margin-left: 30px;
-
-                font-size: 55px;
-                border-radius: 15px;
-
-
+                border: none;
+                background-color: white;
+                font-size: 25px;
+                border-radius: 5px;
+                width: 200px;
             }
 
             input[type='text']:focus {
                 border: none;
-                border-radius: 15px;
+            }
 
+            .btnmenu {
+                display: flex;
             }
         }
     </style>
@@ -395,10 +410,10 @@
             var y = document.getElementById('left');
             if (y.style.display == 'flex') {
                 y.style.display = 'none';
-                y.style.zIndex=3;
+                y.style.zIndex = 3;
                 document.getElementById('right').style.opacity = 1;
             } else {
-                y.style.zIndex=3;
+                y.style.zIndex = 3;
                 y.style.display = 'flex';
                 document.getElementById('right').style.opacity = 0.3;
 
