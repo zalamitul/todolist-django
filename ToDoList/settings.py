@@ -66,7 +66,7 @@ from dotenv import load_dotenv
 load_dotenv()
 DATABASES = {
     'default': {
-        # 'URI':os.environ.get('DATABASE_URL'),
+        'URI':os.environ.get('DATABASE_URL'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.getenv('NAME'),
         'USER': os.getenv('USER'),
@@ -125,7 +125,7 @@ MEDIA_ROOT=BASE_DIR
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-#
-# import dj_database_url
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-#
+
+import dj_database_url
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
