@@ -5,7 +5,8 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>homepage</title>
+    <title>Todolist</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <style>
         * {
             margin: 0;
@@ -14,11 +15,19 @@
             font-family: 'Poppins', sans-serif;
 
         }
-        p{
+
+        p {
             word-wrap: break-word;
             text-align: left;
             letter-spacing: 5;
             padding: 2px 4px;
+        }
+
+        .menucls {
+            width: 30px;
+            height: 4px;
+            background-color: rgb(52, 52, 52);
+            margin: 2px 0;
         }
 
         body {
@@ -45,7 +54,7 @@
             height: 100vh;
             overflow: auto;
             border: 1px solid black;
-            
+
         }
 
         .profile {
@@ -94,6 +103,7 @@
             overflow: auto;
             border: 1px solid black;
         }
+
         .title h1 {
             float: right;
             margin: 10px 20px;
@@ -279,7 +289,7 @@
             a {
                 font-size: 12px;
                 padding: 2px 6px;
-              
+
             }
 
             li:last-child {
@@ -290,24 +300,25 @@
                 background-color: turquoise;
             }
 
-            .tabletodo{
+            .tabletodo {
                 margin: 5px;
                 padding: 5px;
             }
-           
-           
+
+
 
             button {
                 margin: 1px;
                 padding: 1px 2px;
             }
+
             .index {
-                font-size:12px;
+                font-size: 12px;
                 font-weight: 400;
             }
 
             .todotitle {
-               padding: 3px;
+                padding: 3px;
                 font-size: 12px;
             }
 
@@ -352,6 +363,7 @@
 
             .btnmenu {
                 display: flex;
+                flex-direction: column;
             }
         }
     </style>
@@ -363,7 +375,7 @@
         <div class="left" id="left">
             <div class="profile">
                 <div class="photo">
-                    <img src="{% static 'user-icon.png'%}" width="100px" height="100px" alt="">
+                    <i class='fas fa-user-alt' style='font-size:60px'></i>
                 </div>
                 <div class="bio">
                     <span>
@@ -386,19 +398,24 @@
                 </div>
                 <div class="container">
                     <h2>Next update</h2>
-                    <p>-In upcoming update we will add feacture of follwing and follers feactures so that your friends and family can see your activity.</p>
-                        <p> - You can also track task by feacture and searching. </p>
-                            <p>   -as well as you can track your progress and</p>
-                                <p>- also download downloadable pdf report</p>
-                                    <p>   - security of app will be improve</p>
+                    <p>-In upcoming update we will add feacture of follwing and follers feactures so that your friends
+                        and family can see your activity.</p>
+                    <p> - You can also track task by feacture and searching. </p>
+                    <p> -as well as you can track your progress and</p>
+                    <p>- also download downloadable pdf report</p>
+                    <p> - security of app will be improve</p>
                 </div>
 
             </div>
         </div>
         <div class="right" id="right">
             <div class="title">
-                <div id="btnmenu" class="btnmenu" onclick="click"> <img onclick="displayDate()" src="static/menu.png"
-                        onclick="click()"> </div>
+                <div id="btnmenu" class="btnmenu" onclick="click" onclick="displayDate()">
+
+                    <div class="menucls"></div>
+                    <div class="menucls"></div>
+                    <div class="menucls"></div>
+                </div>
                 <h1 style="font-family: 'Dancing Script', cursive;">Todo list</h1>
             </div>
             <div class="nav">
