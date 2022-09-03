@@ -18,9 +18,12 @@
 
         p {
             word-wrap: break-word;
-            text-align: left;
-            letter-spacing: 5;
-            padding: 2px 4px;
+            padding: 4px 22px;
+            text-align: justify;
+            text-justify: inter-word;
+            white-space: normal;
+            text-transform: initial;
+            font-weight: 600;
         }
 
         .menucls {
@@ -396,14 +399,15 @@
                     <h4>Ongoing task:{{request.session.userdata.todo|length}}</h4>
                     <h4>Complated task:{{request.session.userdata.completed_todo|length}}</h4>
                 </div>
+                <hr>
                 <div class="container">
                     <h2>Next update</h2>
                     <p>-In upcoming update we will add feacture of follwing and follers feactures so that your friends
                         and family can see your activity.</p>
-                    <p> - You can also track task by feacture and searching. </p>
-                    <p> -as well as you can track your progress and</p>
-                    <p>- also download downloadable pdf report</p>
-                    <p> - security of app will be improve</p>
+                    <p>-You can also track task by feacture and searching. </p>
+                    <p>-You can track your progress.</p>
+                    <p>-Also download downloadable pdf report</p>
+                    <p>-Security of app will be improve</p>
                 </div>
 
             </div>
@@ -412,9 +416,9 @@
             <div class="title">
                 <div id="btnmenu" class="btnmenu" onclick="click" onclick="displayDate()">
 
-                    <div class="menucls"  onclick="displayDate()"></div>
-                    <div class="menucls"  onclick="displayDate()"></div>
-                    <div class="menucls"  onclick="displayDate()"></div>
+                    <div class="menucls" onclick="displayDate()"></div>
+                    <div class="menucls" onclick="displayDate()"></div>
+                    <div class="menucls" onclick="displayDate()"></div>
                 </div>
                 <h1 style="font-family: 'Dancing Script', cursive;">Todo list</h1>
             </div>

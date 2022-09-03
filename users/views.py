@@ -18,10 +18,23 @@ def signup(req):
         data=User(firstname=req.POST.get('first_name'), lastname=req.POST.get('last_name'),
                   email=req.POST.get('email'), username=req.POST.get('username'),
                   password=make_password(req.POST.get('password')))
-        if email:
+        if req.POST.get('first_name').isspace():
+            error_msg="First name is required"
+        elif req.POST.get('last_name').isspace():
+            error_msg = "Last name is required"
+        elif data.username.isspace():
+            error_msg='Username is recuired'
+        elif len(req.POST.get('password'))<8 :
+            print("data.passwordname")
+            error_msg='minimum password length is 8 character'
+        elif email:
+            error_msg='user already registered'
+        else:
+            error_msg=""
+        if error_msg!="":
             data1={}
             data1['data']=data
-            data1['error']='user already registered'
+            data1['error']=error_msg
             return render(req, 'signin-signup.html', data1)
         else:
             data1={}
